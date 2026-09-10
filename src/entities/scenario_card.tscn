@@ -1,0 +1,98 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/entities/scenario_card.gd" id="1_card"]
+[ext_resource type="Script" path="res://src/components/SwipeComponent.gd" id="2_swipe"]
+
+[node name="ScenarioCard" type="Control"]
+custom_minimum_size = Vector2(290, 370)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 290.0
+offset_bottom = 370.0
+z_index = 10
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+script = ExtResource("1_card")
+
+[node name="Body" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 290.0
+offset_bottom = 370.0
+mouse_filter = 2
+theme_type_variation = &"CardPanel"
+
+[node name="Margin" type="MarginContainer" parent="Body"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="Content" type="VBoxContainer" parent="Body/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Portrait" type="TextureRect" parent="Body/Margin/Content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 170)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="Body/Margin/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"CardName"
+text = "Name"
+horizontal_alignment = 1
+
+[node name="RoleLabel" type="Label" parent="Body/Margin/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"CardRole"
+text = "Rolle"
+horizontal_alignment = 1
+autowrap_mode = 3
+max_lines_visible = 2
+text_overrun_behavior = 3
+
+[node name="ChipCenter" type="CenterContainer" parent="Body/Margin/Content"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Chip" type="PanelContainer" parent="Body/Margin/Content/ChipCenter"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"ChipPanel"
+
+[node name="ChipRow" type="HBoxContainer" parent="Body/Margin/Content/ChipCenter/Chip"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="ChannelIcon" type="TextureRect" parent="Body/Margin/Content/ChipCenter/Chip/ChipRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ChannelLabel" type="Label" parent="Body/Margin/Content/ChipCenter/Chip/ChipRow"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"ChipLabel"
+text = "Im Gespräch"
+
+[node name="SwipeComponent" type="Node" parent="."]
+script = ExtResource("2_swipe")

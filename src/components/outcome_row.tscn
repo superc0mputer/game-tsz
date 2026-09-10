@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/components/OutcomeRow.gd" id="1_row"]
+[ext_resource type="Script" path="res://src/components/SegmentBar.gd" id="2_segbar"]
+
+[node name="OutcomeRow" type="HBoxContainer"]
+theme_override_constants/separation = 12
+script = ExtResource("1_row")
+
+[node name="Icon" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(190, 0)
+layout_mode = 2
+theme_type_variation = &"BarName"
+text = "Wert"
+
+[node name="Bar" type="Control" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+script = ExtResource("2_segbar")
+
+[node name="ChangeLabel" type="Label" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(190, 0)
+layout_mode = 2
+theme_type_variation = &"BarName"
+text = "von 5 auf 4 (-1)"
+horizontal_alignment = 2

@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/components/OptionPanel.gd" id="1_option"]
+
+[node name="OptionPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(220, 0)
+theme_type_variation = &"OptionPanelStyle"
+script = ExtResource("1_option")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="Column" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="HintRow" type="HBoxContainer" parent="Margin/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="Arrow" type="TextureRect" parent="Margin/Column/HintRow"]
+unique_name_in_owner = true
+modulate = Color(0.42, 0.4, 0.38, 1)
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HintLabel" type="Label" parent="Margin/Column/HintRow"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"Muted"
+text = "Nach links ziehen"
+
+[node name="OptionLabel" type="Label" parent="Margin/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"OptionLabel"
+text = "Antwort"
+horizontal_alignment = 1
+autowrap_mode = 3
