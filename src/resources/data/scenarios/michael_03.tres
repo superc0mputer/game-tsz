@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ScenarioData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ScenarioData.gd" id="1_scenario"]
+[ext_resource type="Script" path="res://src/resources/ChoiceData.gd" id="2_choice"]
+[ext_resource type="Script" path="res://src/resources/ValueDelta.gd" id="3_delta"]
+[ext_resource type="Resource" path="res://src/resources/data/characters/michael.tres" id="4_character"]
+
+[sub_resource type="Resource" id="delta_a"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = 1
+verbundenheit = 0
+entlastung = -1
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2_choice")
+label = "Schauen wir lieber erst nach, ob wirklich etwas offen ist."
+outcome_text = "Michael findet keine Nachzahlung im System. Anscheinend handelte es sich um einen Betrugsversuch, um an die Zahlungsdaten zu kommen. Das Paket wird ganz normal zugestellt."
+delta = SubResource("delta_a")
+
+[sub_resource type="Resource" id="delta_b"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = -2
+verbundenheit = 0
+entlastung = 1
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2_choice")
+label = "Die 1,99 Euro zahle ich einfach schnell."
+outcome_text = "Die SMS gehörte nicht zur Sendung. Über den Link sollten Zahlungsdaten abgegriffen werden."
+delta = SubResource("delta_b")
+
+[resource]
+script = ExtResource("1_scenario")
+id = &"michael_03"
+character = ExtResource("4_character")
+title = "Die Nachzahlung"
+body_text = "Sie haben doch auf ein Paket gewartet, oder? Sie meinten, es kam eine SMS, in der stand, es sei noch eine kleine Zustellgebühr offen? Soll ich mal schauen, ob bei mir dazu etwas steht?"
+channel = 0
+sender_label = ""
+choice_a = SubResource("choice_a")
+choice_b = SubResource("choice_b")
+follows = &""

@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ScenarioData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ScenarioData.gd" id="1_scenario"]
+[ext_resource type="Script" path="res://src/resources/ChoiceData.gd" id="2_choice"]
+[ext_resource type="Script" path="res://src/resources/ValueDelta.gd" id="3_delta"]
+[ext_resource type="Resource" path="res://src/resources/data/characters/linh.tres" id="4_character"]
+
+[sub_resource type="Resource" id="delta_a"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 1
+sicherheit = 1
+verbundenheit = 0
+entlastung = 0
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2_choice")
+label = "Ja, ich habe alles aufgehoben."
+outcome_text = "Linh kann Empfänger, Betrag und Bestelldaten schnell nachvollziehen. Die gesicherten Unterlagen helfen, den Fall weiterzugeben und mögliche Schritte zu prüfen."
+delta = SubResource("delta_a")
+
+[sub_resource type="Resource" id="delta_b"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = -2
+verbundenheit = 0
+entlastung = 1
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2_choice")
+label = "Nein, die Mails habe ich inzwischen gelöscht."
+outcome_text = "Linh kann den Vorgang trotzdem aufnehmen, aber ohne Belege ist vieles schwerer nachzuvollziehen. Gerade bei auffälligen Shops lohnt es sich, Bestellbestätigung, Zahlungsbeleg und Screenshots aufzubewahren."
+delta = SubResource("delta_b")
+
+[resource]
+script = ExtResource("1_scenario")
+id = &"linh_07"
+character = ExtResource("4_character")
+title = "Das Geld ist schon überwiesen"
+body_text = "Sie sagen, die Küchenmaschine, die Sie online bestellt haben, wurde nie geliefert und der Händler reagiert nicht mehr? … Leider ist die Überweisung schon raus. Haben Sie die Bestellbestätigung und den Zahlungsbeleg noch?"
+channel = 0
+sender_label = ""
+choice_a = SubResource("choice_a")
+choice_b = SubResource("choice_b")
+follows = &""

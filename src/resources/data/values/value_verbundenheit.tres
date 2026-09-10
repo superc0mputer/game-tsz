@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="ValueDefinition" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ValueDefinition.gd" id="1_def"]
+[ext_resource type="Script" path="res://src/resources/ValueTier.gd" id="2_tier"]
+[ext_resource type="Texture2D" path="res://assets/sprites/icons/value_verbundenheit.svg" id="3_icon"]
+
+[sub_resource type="Resource" id="tier_0"]
+script = ExtResource("2_tier")
+min_score = 0
+max_score = 0
+state_name = "Viel für dich allein"
+description = "Du bindest andere nur selten ein und nutzt Möglichkeiten zum Austausch eher wenig. Das gibt dir viel Privatsphäre und eigenen Raum, kann aber Unterstützung und gemeinsame Erlebnisse erschweren."
+
+[sub_resource type="Resource" id="tier_1"]
+script = ExtResource("2_tier")
+min_score = 1
+max_score = 3
+state_name = "Eher zurückhaltend verbunden"
+description = "Du hältst deine Kontakte eher überschaubar und regelst vieles für dich. Dadurch bestimmst du selbst, wie viel andere mitbekommen, nutzt aber manche Möglichkeiten für Austausch und Unterstützung weniger."
+
+[sub_resource type="Resource" id="tier_2"]
+script = ExtResource("2_tier")
+min_score = 4
+max_score = 6
+state_name = "Gut verbunden"
+description = "Du nutzt persönliche und digitale Kontakte dort, wo sie dir guttun. Gleichzeitig entscheidest du bewusst, was du teilen möchtest und wann du Dinge lieber selbst regelst."
+
+[sub_resource type="Resource" id="tier_3"]
+script = ExtResource("2_tier")
+min_score = 7
+max_score = 9
+state_name = "Stark verbunden"
+description = "Familie, Freunde, Nachbarschaft und andere Kontakte spielen in deinem Alltag eine wichtige Rolle. Das schafft Nähe und Unterstützung, bedeutet aber auch, dass andere häufiger Einblick bekommen oder beteiligt sind."
+
+[sub_resource type="Resource" id="tier_4"]
+script = ExtResource("2_tier")
+min_score = 10
+max_score = 10
+state_name = "Sehr eng eingebunden"
+description = "Du beziehst andere sehr häufig ein und nutzt viele Möglichkeiten, miteinander verbunden zu bleiben. Das kann viel Unterstützung und Nähe schaffen, lässt dir aber manchmal weniger Privatsphäre oder eigenen Entscheidungsspielraum."
+
+[resource]
+script = ExtResource("1_def")
+id = &"verbundenheit"
+display_name = "Verbundenheit"
+focus = "Kontakt zu Familie, Freunden, Nachbarschaft und Gesellschaft – digital und persönlich."
+color = Color(0.906, 0.435, 0.318, 1)
+icon = ExtResource("3_icon")
+tiers = Array[ExtResource("2_tier")]([SubResource("tier_0"), SubResource("tier_1"), SubResource("tier_2"), SubResource("tier_3"), SubResource("tier_4")])

@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ScenarioData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ScenarioData.gd" id="1_scenario"]
+[ext_resource type="Script" path="res://src/resources/ChoiceData.gd" id="2_choice"]
+[ext_resource type="Script" path="res://src/resources/ValueDelta.gd" id="3_delta"]
+[ext_resource type="Resource" path="res://src/resources/data/characters/silke.tres" id="4_character"]
+
+[sub_resource type="Resource" id="delta_a"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 1
+sicherheit = 1
+verbundenheit = 0
+entlastung = -1
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2_choice")
+label = "Ich rufe Silke erst über ihre bekannte Nummer an."
+outcome_text = "Silke meldet sich ganz normal und weiß von nichts. Die Nachricht kam von Betrügern, die Nähe und Zeitdruck genutzt haben, um Vertrauen aufzubauen."
+delta = SubResource("delta_a")
+
+[sub_resource type="Resource" id="delta_b"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = -2
+verbundenheit = 1
+entlastung = 0
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2_choice")
+label = "Klar, ich speichere die Nummer."
+outcome_text = "Kurz darauf bittet „Silke“ dringend um eine Überweisung und darum, niemandem etwas zu sagen. Die vertraute Ansprache, neue Nummer, Zeitdruck und Geheimhaltung waren Warnzeichen."
+delta = SubResource("delta_b")
+
+[resource]
+script = ExtResource("1_scenario")
+id = &"silke_03"
+character = ExtResource("4_character")
+title = "Die neue Nummer"
+body_text = "Hallo, ich bin’s. Mein Handy ist kaputt, das ist meine neue Handynummer. Kannst du die bitte speichern? Ich muss dich gleich noch um etwas bitten."
+channel = 1
+sender_label = ""
+choice_a = SubResource("choice_a")
+choice_b = SubResource("choice_b")
+follows = &""

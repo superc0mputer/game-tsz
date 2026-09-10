@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ScenarioData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ScenarioData.gd" id="1_scenario"]
+[ext_resource type="Script" path="res://src/resources/ChoiceData.gd" id="2_choice"]
+[ext_resource type="Script" path="res://src/resources/ValueDelta.gd" id="3_delta"]
+[ext_resource type="Resource" path="res://src/resources/data/characters/hildegard.tres" id="4_character"]
+
+[sub_resource type="Resource" id="delta_a"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = 1
+verbundenheit = 0
+entlastung = -1
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2_choice")
+label = "Wir suchen lieber gleich eine andere Verbindung."
+outcome_text = "Die Alternative dauert etwas länger, dafür vermeidet ihr die Treppen und kommt ohne großen Stress an."
+delta = SubResource("delta_a")
+
+[sub_resource type="Resource" id="delta_b"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = -1
+verbundenheit = 0
+entlastung = 1
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2_choice")
+label = "Wir fahren trotzdem hin und schauen dann."
+outcome_text = "Der Aufzug ist tatsächlich außer Betrieb und ihr müsst vor Ort spontan umplanen."
+delta = SubResource("delta_b")
+
+[resource]
+script = ExtResource("1_scenario")
+id = &"hildegard_03"
+character = ExtResource("4_character")
+title = "Aufzug kaputt"
+body_text = "Wir müssen ja am Hauptbahnhof umsteigen, damit wir rechtzeitig beim Theater sind. Jetzt zeigt dein Handy, dass der Aufzug dort kaputt ist. Mit meinen Knien die Treppen hoch muss ich echt nicht haben. Was meinst du?"
+channel = 0
+sender_label = ""
+choice_a = SubResource("choice_a")
+choice_b = SubResource("choice_b")
+follows = &""

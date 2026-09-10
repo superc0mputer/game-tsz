@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ScenarioData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ScenarioData.gd" id="1_scenario"]
+[ext_resource type="Script" path="res://src/resources/ChoiceData.gd" id="2_choice"]
+[ext_resource type="Script" path="res://src/resources/ValueDelta.gd" id="3_delta"]
+[ext_resource type="Resource" path="res://src/resources/data/characters/silke.tres" id="4_character"]
+
+[sub_resource type="Resource" id="delta_a"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = -2
+verbundenheit = 1
+entlastung = 0
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2_choice")
+label = "Wenn Silke mich braucht, bereite ich das Geld vor."
+outcome_text = "Silke hatte keinen Unfall. Die Betrüger haben eine künstlich erzeugte Stimme benutzt, die wie Silke klang. Mit KI können heute schon kurze Sprachaufnahmen ausreichen, um Stimmen täuschend ähnlich nachzubilden. Mit dem erfundenen Szenario wollen die Täter dich unter Schock setzen, um so an dein Geld zu kommen."
+delta = SubResource("delta_a")
+
+[sub_resource type="Resource" id="delta_b"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 1
+sicherheit = 1
+verbundenheit = 0
+entlastung = -1
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2_choice")
+label = "Ich lege auf und rufe Silke selbst an."
+outcome_text = "Die echte Silke geht ans Telefon und weiß von nichts. Die Stimme im ersten Anruf war nachgeahmt, um dich unter Schock zu setzen und an dein Geld zu kommen. Gerade weil KI Stimmen sehr überzeugend imitieren kann, ist ein Rückruf über eine bekannte Nummer oder ein anderer unabhängiger Kontaktweg besonders hilfreich."
+delta = SubResource("delta_b")
+
+[resource]
+script = ExtResource("1_scenario")
+id = &"silke_08"
+character = ExtResource("4_character")
+title = "Der Schockanruf"
+body_text = "Anruf von einer unterdrückten Nummer: Mama/Papa? Bitte erschrick nicht … ich hatte einen Unfall. Mir geht’s nicht gut und ich kann gerade kaum reden. Gleich erklärt dir jemand, was passiert ist. Bitte hilf mir einfach.\nEine andere Stimme übernimmt: Hier ist die Polizei. Ihre Tochter hat einen schweren Unfall verursacht. Damit sie jetzt nach Hause kann, muss kurzfristig eine größere Summe als Kaution hinterlegt werden. Jemand könnte das Geld bei Ihnen abholen."
+channel = 2
+sender_label = "Anruf von einer unterdrückten Nummer"
+choice_a = SubResource("choice_a")
+choice_b = SubResource("choice_b")
+follows = &""

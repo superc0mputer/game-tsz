@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/resources/CharacterData.gd" id="1_char"]
+[ext_resource type="Texture2D" path="res://assets/sprites/characters/cem.svg" id="2_portrait"]
+
+[resource]
+script = ExtResource("1_char")
+id = &"cem"
+display_name = "Cem Yilmaz"
+tagline = "Der Polizist"
+age_text = "ca. Mitte 40"
+role_text = "Polizeibeamter im örtlichen Revier"
+description = "Cem arbeitet schon lange bei der Polizei und hat im Berufsalltag regelmäßig mit Betrugsfällen zu tun. Er ist ruhig, sachlich und nimmt Sorgen ernst, ohne gleich hinter jeder ungewöhnlichen Situation eine Straftat zu vermuten."
+strengths = "Er kennt typische Vorgehensweisen von Betrügern und weiß, welche Schritte im Verdachtsfall sinnvoll sind."
+weaknesses = "Er ist kein Digitalexperte und kennt nicht jede neue App. Manchmal denkt er stärker in klassischen Sicherheitskategorien als in Fragen von Komfort oder digitaler Teilhabe."
+portrait = ExtResource("2_portrait")
+accent_color = Color(0.122, 0.227, 0.373, 1)
+formal_address = true

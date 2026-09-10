@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ScenarioData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ScenarioData.gd" id="1_scenario"]
+[ext_resource type="Script" path="res://src/resources/ChoiceData.gd" id="2_choice"]
+[ext_resource type="Script" path="res://src/resources/ValueDelta.gd" id="3_delta"]
+[ext_resource type="Resource" path="res://src/resources/data/characters/linh.tres" id="4_character"]
+
+[sub_resource type="Resource" id="delta_a"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 1
+sicherheit = 1
+verbundenheit = 0
+entlastung = -1
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2_choice")
+label = "Ich öffne die Banking-App selbst und prüfe dort, ob etwas ansteht."
+outcome_text = "In der App gibt es keine Aufforderung zur Aktualisierung. Die Mail war ein Phishing-Versuch, um deine Bankdaten abzugreifen."
+delta = SubResource("delta_a")
+
+[sub_resource type="Resource" id="delta_b"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = -2
+verbundenheit = 0
+entlastung = 1
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2_choice")
+label = "Ich klicke auf den Link und bestätige das schnell."
+outcome_text = "Die Mail war gefälscht. Der Link führte auf eine nachgebaute Bankseite, auf der deine Zugangsdaten abgegriffen werden sollten. Die knappe Frist und die angekündigte Einschränkung sollten dich unter Druck setzen."
+delta = SubResource("delta_b")
+
+[resource]
+script = ExtResource("1_scenario")
+id = &"linh_05"
+character = ExtResource("4_character")
+title = "Die Mail von der Bank"
+body_text = "Guten Tag, aus Sicherheitsgründen muss Ihr TAN-Verfahren neu bestätigt werden. Bitte führen Sie die Aktualisierung bis heute 18:00 Uhr über den folgenden Link durch. Andernfalls kann Ihr Online-Banking vorübergehend eingeschränkt werden."
+channel = 3
+sender_label = "E-Mail von deiner Bank"
+choice_a = SubResource("choice_a")
+choice_b = SubResource("choice_b")
+follows = &""

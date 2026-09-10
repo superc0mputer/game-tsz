@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/resources/CharacterData.gd" id="1_char"]
+[ext_resource type="Texture2D" path="res://assets/sprites/characters/hildegard.svg" id="2_portrait"]
+
+[resource]
+script = ExtResource("1_char")
+id = &"hildegard"
+display_name = "Hildegard"
+tagline = "Die übervorsichtige Freundin"
+age_text = "Seniorenalter"
+role_text = "Freundin der spielenden Person"
+description = "Hildegard ist überzeugt, dass man im Internet sehr vorsichtig sein muss. Sie liest viel über Betrugsfälle und warnt ihre Freunde regelmäßig."
+strengths = "Hinterfragt Dinge und lässt sich schwer unter Druck setzen."
+weaknesses = "Sie überschätzt Risiken und verzichtet manchmal auf hilfreiche digitale Angebote."
+portrait = ExtResource("2_portrait")
+accent_color = Color(0.788, 0.482, 0.518, 1)
+formal_address = false

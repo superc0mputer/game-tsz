@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/resources/CharacterData.gd" id="1_char"]
+[ext_resource type="Texture2D" path="res://assets/sprites/characters/silke.svg" id="2_portrait"]
+
+[resource]
+script = ExtResource("1_char")
+id = &"silke"
+display_name = "Silke"
+tagline = "Die besorgte Tochter"
+age_text = "ca. Mitte 50"
+role_text = "Tochter der spielenden Person"
+description = "Silke möchte ihre Eltern schützen und ihnen das Leben erleichtern. Sie ist grundsätzlich digital fit, arbeitet noch und hat deshalb oft wenig Zeit. Wenn etwas nicht funktioniert, übernimmt sie schnell selbst."
+strengths = "Sie erkennt viele Risiken, kennt gängige digitale Anwendungen und hilft schnell und zuverlässig."
+weaknesses = "Sie ist manchmal paternalistisch und unterschätzt, was ihre Eltern selbst können oder lernen könnten. Außerdem kennt auch sie nicht jede neue Betrugsmasche."
+portrait = ExtResource("2_portrait")
+accent_color = Color(0.557, 0.361, 0.541, 1)
+formal_address = false

@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ScenarioData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ScenarioData.gd" id="1_scenario"]
+[ext_resource type="Script" path="res://src/resources/ChoiceData.gd" id="2_choice"]
+[ext_resource type="Script" path="res://src/resources/ValueDelta.gd" id="3_delta"]
+[ext_resource type="Resource" path="res://src/resources/data/characters/noah.tres" id="4_character"]
+
+[sub_resource type="Resource" id="delta_a"]
+script = ExtResource("3_delta")
+selbststaendigkeit = -1
+sicherheit = 1
+verbundenheit = 0
+entlastung = 1
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2_choice")
+label = "Ja, schalte die automatische Sicherung ein."
+outcome_text = "Deine Fotos werden künftig automatisch zusätzlich in der Cloud gespeichert. Das schützt vor Datenverlust und ist bequem. Dafür landen auch neue Bilder automatisch beim Cloud-Anbieter."
+delta = SubResource("delta_a")
+
+[sub_resource type="Resource" id="delta_b"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 1
+sicherheit = 1
+verbundenheit = 0
+entlastung = -1
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2_choice")
+label = "Ich möchte lieber selbst auswählen, welche Fotos gesichert werden."
+outcome_text = "Du behältst mehr Kontrolle darüber, welche Bilder in der Cloud gespeichert werden. Dafür musst du regelmäßig selbst daran denken, wichtige Fotos zu sichern."
+delta = SubResource("delta_b")
+
+[resource]
+script = ExtResource("1_scenario")
+id = &"noah_04"
+character = ExtResource("4_character")
+title = "Sicherung in der Cloud"
+body_text = "Die ganzen Fotos von früher sind nur auf deinem Handy? Wenn das kaputtgeht, sind die weg. Ich kann dir eine Cloud einrichten. Das ist einfach ein Speicherplatz im Internet, wo deine Fotos zusätzlich gespeichert werden. Dann kannst du sie wiederbekommen, auch wenn mit dem Handy was passiert. Soll ich die automatische Sicherung einschalten?"
+channel = 0
+sender_label = ""
+choice_a = SubResource("choice_a")
+choice_b = SubResource("choice_b")
+follows = &""

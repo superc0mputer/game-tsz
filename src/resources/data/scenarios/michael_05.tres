@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ScenarioData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ScenarioData.gd" id="1_scenario"]
+[ext_resource type="Script" path="res://src/resources/ChoiceData.gd" id="2_choice"]
+[ext_resource type="Script" path="res://src/resources/ValueDelta.gd" id="3_delta"]
+[ext_resource type="Resource" path="res://src/resources/data/characters/michael.tres" id="4_character"]
+
+[sub_resource type="Resource" id="delta_a"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = 1
+verbundenheit = 0
+entlastung = -1
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2_choice")
+label = "Nein, ich nehme nichts an, was ich nicht bestellt habe."
+outcome_text = "Die Sendung geht zurück und du musst dich nicht weiter darum kümmern. Hinterher stellt sich heraus, dass das Paket von Betrügern kam und diese dich bei Annahme zur Zahlung aufgefordert hätten."
+delta = SubResource("delta_a")
+
+[sub_resource type="Resource" id="delta_b"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = -2
+verbundenheit = 0
+entlastung = 1
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2_choice")
+label = "Wenn es bezahlt ist und mein Name draufsteht, nehme ich es an."
+outcome_text = "Später kommt eine Zahlungsaufforderung für eine Bestellung, die du nie gemacht hast."
+delta = SubResource("delta_b")
+
+[resource]
+script = ExtResource("1_scenario")
+id = &"michael_05"
+character = ExtResource("4_character")
+title = "Das unerwartete Paket"
+body_text = "Ich habe hier ein Paket auf Ihren Namen, aber Sie sagen, Sie haben nichts bestellt. Es ist bereits bezahlt. Wollen Sie es trotzdem annehmen?"
+channel = 0
+sender_label = ""
+choice_a = SubResource("choice_a")
+choice_b = SubResource("choice_b")
+follows = &""

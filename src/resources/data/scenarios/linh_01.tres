@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ScenarioData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ScenarioData.gd" id="1_scenario"]
+[ext_resource type="Script" path="res://src/resources/ChoiceData.gd" id="2_choice"]
+[ext_resource type="Script" path="res://src/resources/ValueDelta.gd" id="3_delta"]
+[ext_resource type="Resource" path="res://src/resources/data/characters/linh.tres" id="4_character"]
+
+[sub_resource type="Resource" id="delta_a"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = 1
+verbundenheit = 0
+entlastung = -1
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2_choice")
+label = "Nein, ich möchte lieber immer mit PIN bezahlen."
+outcome_text = "Du fühlst dich bei jeder Zahlung bewusster abgesichert. Der Bezahlvorgang dauert dafür etwas länger."
+delta = SubResource("delta_a")
+
+[sub_resource type="Resource" id="delta_b"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = -1
+verbundenheit = 0
+entlastung = 1
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2_choice")
+label = "Ja, das klingt praktisch."
+outcome_text = "Kleine Einkäufe gehen deutlich schneller. Du musst dich aber daran gewöhnen, die Karte bewusster im Blick zu behalten."
+delta = SubResource("delta_b")
+
+[resource]
+script = ExtResource("1_scenario")
+id = &"linh_01"
+character = ExtResource("4_character")
+title = "Kontaktlos bezahlen"
+body_text = "Ihre neue Bankkarte kann kontaktlos bezahlen. Bei kleineren Beträgen müssen Sie oft nicht einmal die PIN eingeben. Möchten Sie die Funktion nutzen?"
+channel = 0
+sender_label = ""
+choice_a = SubResource("choice_a")
+choice_b = SubResource("choice_b")
+follows = &""

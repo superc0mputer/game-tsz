@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/resources/CharacterData.gd" id="1_char"]
+[ext_resource type="Texture2D" path="res://assets/sprites/characters/jana.svg" id="2_portrait"]
+
+[resource]
+script = ExtResource("1_char")
+id = &"jana"
+display_name = "Jana"
+tagline = "Die VITA-Begleitung"
+age_text = "ca. Anfang 40"
+role_text = "Professionelle Alltagsbegleitung"
+description = "Jana unterstützt ältere Menschen bei organisatorischen und alltäglichen Aufgaben, zum Beispiel Arzttermine, Einkäufe, Behördengänge oder die Nutzung digitaler Angebote. Sie möchte ihre Klienten möglichst selbstständig halten und erklärt Dinge geduldig."
+strengths = "Sie kennt viele praktische digitale Lösungen, kann gut unterstützen und achtet darauf, nicht unnötig zu bevormunden."
+weaknesses = "Im Arbeitsalltag steht sie manchmal unter Zeitdruck. Dann ist es verlockend, etwas schnell selbst zu erledigen. Außerdem ist sie keine IT- oder Sicherheitsexpertin."
+portrait = ExtResource("2_portrait")
+accent_color = Color(0.165, 0.616, 0.561, 1)
+formal_address = true

@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ScenarioData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ScenarioData.gd" id="1_scenario"]
+[ext_resource type="Script" path="res://src/resources/ChoiceData.gd" id="2_choice"]
+[ext_resource type="Script" path="res://src/resources/ValueDelta.gd" id="3_delta"]
+[ext_resource type="Resource" path="res://src/resources/data/characters/gerhard.tres" id="4_character"]
+
+[sub_resource type="Resource" id="delta_a"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = -1
+verbundenheit = 0
+entlastung = 1
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2_choice")
+label = "Für unwichtige Konten kannst du das ruhig machen."
+outcome_text = "Gerhard muss sich deutlich weniger merken. Als später ein Dienst gehackt wird, ist dasselbe Passwort allerdings auch bei anderen Konten gefährdet."
+delta = SubResource("delta_a")
+
+[sub_resource type="Resource" id="delta_b"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = 1
+verbundenheit = 0
+entlastung = -1
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2_choice")
+label = "Nimm lieber unterschiedliche Passwörter und such dir eine Lösung zum Verwalten."
+outcome_text = "Die Einrichtung kostet Gerhard zunächst Zeit, danach findet er seine Zugangsdaten aber zuverlässig wieder."
+delta = SubResource("delta_b")
+
+[resource]
+script = ExtResource("1_scenario")
+id = &"gerhard_02"
+character = ExtResource("4_character")
+title = "Passwortchaos"
+body_text = "Ich kann mir diese ganzen Passwörter einfach nicht merken. Ich hab mir überlegt, für die unwichtigen Sachen überall dasselbe zu nehmen. Das wäre doch viel einfacher, oder?"
+channel = 0
+sender_label = ""
+choice_a = SubResource("choice_a")
+choice_b = SubResource("choice_b")
+follows = &""

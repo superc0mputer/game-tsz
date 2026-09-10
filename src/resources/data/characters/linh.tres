@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/resources/CharacterData.gd" id="1_char"]
+[ext_resource type="Texture2D" path="res://assets/sprites/characters/linh.svg" id="2_portrait"]
+
+[resource]
+script = ExtResource("1_char")
+id = &"linh"
+display_name = "Linh Nguyen"
+tagline = "Die Bankmitarbeiterin"
+age_text = "ca. Anfang 30"
+role_text = "Langjährige Mitarbeiterin der örtlichen Bank"
+description = "Linh kennt viele Kundinnen und Kunden persönlich. Sie möchte sichere Bankgeschäfte fördern und erklärt auch Online-Banking, Kartenzahlung und TAN-Verfahren."
+strengths = "Gute Kenntnisse rund um Bankgeschäfte und typische Bankbetrugsmaschen."
+weaknesses = "Für sie sind manche Prozesse Routine. Dadurch erklärt sie manchmal zu schnell oder unterschätzt, wie verwirrend digitale Bankverfahren wirken können."
+portrait = ExtResource("2_portrait")
+accent_color = Color(0.184, 0.420, 0.310, 1)
+formal_address = true

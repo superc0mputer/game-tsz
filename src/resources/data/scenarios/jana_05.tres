@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ScenarioData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ScenarioData.gd" id="1_scenario"]
+[ext_resource type="Script" path="res://src/resources/ChoiceData.gd" id="2_choice"]
+[ext_resource type="Script" path="res://src/resources/ValueDelta.gd" id="3_delta"]
+[ext_resource type="Resource" path="res://src/resources/data/characters/jana.tres" id="4_character"]
+
+[sub_resource type="Resource" id="delta_a"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = -1
+verbundenheit = 2
+entlastung = 0
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2_choice")
+label = "Ja, tragen wir ruhig ein bisschen mehr über mich ein."
+outcome_text = "Dein Profil wirkt persönlich und andere können leichter Anknüpfungspunkte finden. Gleichzeitig sind nun auch Informationen über dich öffentlich sichtbar, die für die Teilnahme gar nicht nötig gewesen wären."
+delta = SubResource("delta_a")
+
+[sub_resource type="Resource" id="delta_b"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = 1
+verbundenheit = 1
+entlastung = 0
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2_choice")
+label = "Zeigen Sie mir erst, welche Angaben wirklich nötig sind."
+outcome_text = "Du richtest ein schlichtes Profil ein und gibst nur wenige persönliche Informationen preis. Für den Austausch in der Gruppe reicht das trotzdem aus."
+delta = SubResource("delta_b")
+
+[resource]
+script = ExtResource("1_scenario")
+id = &"jana_05"
+character = ExtResource("4_character")
+title = "Die Online-Nachbarschaftsgruppe"
+body_text = "Sie haben ja erzählt, dass Sie hier nach dem Umzug noch kaum jemanden kennen. Ich habe im Internet eine Nachbarschaftsgruppe gefunden, in der sich Leute aus dem Viertel online austauschen und Treffen organisieren. Für das Profil können Sie einiges über sich angeben. Wollen Sie lieber etwas mehr von sich zeigen oder nur das Nötigste eintragen?"
+channel = 0
+sender_label = ""
+choice_a = SubResource("choice_a")
+choice_b = SubResource("choice_b")
+follows = &""

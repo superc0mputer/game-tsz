@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="ValueDefinition" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ValueDefinition.gd" id="1_def"]
+[ext_resource type="Script" path="res://src/resources/ValueTier.gd" id="2_tier"]
+[ext_resource type="Texture2D" path="res://assets/sprites/icons/value_selbststaendigkeit.svg" id="3_icon"]
+
+[sub_resource type="Resource" id="tier_0"]
+script = ExtResource("2_tier")
+min_score = 0
+max_score = 0
+state_name = "Stark auf andere angewiesen"
+description = "Viele digitale Aufgaben und Entscheidungen überlässt du anderen. Das kann vieles erleichtern, bedeutet aber auch, dass du häufiger darauf angewiesen bist, dass jemand Zeit hat und für dich übernimmt."
+
+[sub_resource type="Resource" id="tier_1"]
+script = ExtResource("2_tier")
+min_score = 1
+max_score = 3
+state_name = "Viel Unterstützung"
+description = "Du lässt dir bei digitalen Dingen häufig helfen und gibst manche Aufgaben gerne ab. Das kann entlasten, aber manchmal fehlt dir dadurch der Überblick darüber, was genau gemacht oder entschieden wurde."
+
+[sub_resource type="Resource" id="tier_2"]
+script = ExtResource("2_tier")
+min_score = 4
+max_score = 6
+state_name = "Selbstbestimmt mit Unterstützung"
+description = "Du entscheidest selbst, was du alleine machen möchtest und wo Unterstützung hilfreich ist. Hilfe anzunehmen bedeutet für dich nicht automatisch, die Kontrolle abzugeben."
+
+[sub_resource type="Resource" id="tier_3"]
+script = ExtResource("2_tier")
+min_score = 7
+max_score = 9
+state_name = "Sehr eigenständig"
+description = "Du möchtest digitale Dinge möglichst selbst verstehen, prüfen und erledigen. Das gibt dir viel Kontrolle und Unabhängigkeit, kann aber manchmal zusätzlichen Aufwand bedeuten."
+
+[sub_resource type="Resource" id="tier_4"]
+script = ExtResource("2_tier")
+min_score = 10
+max_score = 10
+state_name = "Alles selbst im Blick"
+description = "Du möchtest sehr viel selbst verstehen und entscheiden. Dadurch behältst du die Kontrolle, nutzt Unterstützung oder Vereinfachungen aber möglicherweise seltener, auch wenn sie dir in manchen Situationen guttun könnten."
+
+[resource]
+script = ExtResource("1_def")
+id = &"selbststaendigkeit"
+display_name = "Selbstständigkeit"
+focus = "Eigene Entscheidungen treffen, digitale Dinge verstehen und möglichst selbst handhaben."
+color = Color(0.165, 0.616, 0.561, 1)
+icon = ExtResource("3_icon")
+tiers = Array[ExtResource("2_tier")]([SubResource("tier_0"), SubResource("tier_1"), SubResource("tier_2"), SubResource("tier_3"), SubResource("tier_4")])

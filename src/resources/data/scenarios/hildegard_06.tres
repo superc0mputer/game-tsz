@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ScenarioData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ScenarioData.gd" id="1_scenario"]
+[ext_resource type="Script" path="res://src/resources/ChoiceData.gd" id="2_choice"]
+[ext_resource type="Script" path="res://src/resources/ValueDelta.gd" id="3_delta"]
+[ext_resource type="Resource" path="res://src/resources/data/characters/hildegard.tres" id="4_character"]
+
+[sub_resource type="Resource" id="delta_a"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = -2
+verbundenheit = 0
+entlastung = 1
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2_choice")
+label = "Wenn du den Service nutzen willst, trag sie ein."
+outcome_text = "Eine Lastschrift ist grundsätzlich normal. Hildegard hat aber noch gar nicht geprüft, wer hinter dem Anbieter steckt und welche Kosten genau anfallen. Die Kombination aus Haustürgeschäft und sofort verlangten Bankdaten wäre ein Grund, genauer hinzuschauen."
+delta = SubResource("delta_a")
+
+[sub_resource type="Resource" id="delta_b"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 1
+sicherheit = 1
+verbundenheit = 0
+entlastung = -1
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2_choice")
+label = "Gib die Bankverbindung noch nicht raus und prüf erst den Anbieter."
+outcome_text = "Hildegard nimmt die Unterlagen mit und schaut später nach. Dabei findet sie zusätzliche Gebühren, die im Gespräch kaum erwähnt wurden."
+delta = SubResource("delta_b")
+
+[resource]
+script = ExtResource("1_scenario")
+id = &"hildegard_06"
+character = ExtResource("4_character")
+title = "Anbieter will IBAN"
+body_text = "Ein Mann von einem Einkaufsservice für Senioren steht gerade bei mir vor der Tür. Wäre eigentlich schon praktisch, gerade mit meinem schlimmen Knie … Wenn ich regelmäßig beliefert werden will, soll ich gleich meine IBAN eintragen, dann wird alles automatisch abgebucht. Er sagt, das sei bei allen Kunden so. Soll ich das machen?"
+channel = 2
+sender_label = ""
+choice_a = SubResource("choice_a")
+choice_b = SubResource("choice_b")
+follows = &""

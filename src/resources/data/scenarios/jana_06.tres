@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ScenarioData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ScenarioData.gd" id="1_scenario"]
+[ext_resource type="Script" path="res://src/resources/ChoiceData.gd" id="2_choice"]
+[ext_resource type="Script" path="res://src/resources/ValueDelta.gd" id="3_delta"]
+[ext_resource type="Resource" path="res://src/resources/data/characters/jana.tres" id="4_character"]
+
+[sub_resource type="Resource" id="delta_a"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = 0
+verbundenheit = 2
+entlastung = -1
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2_choice")
+label = "Ich probiere es noch einmal."
+outcome_text = "Beim zweiten Treffen kennst du schon ein paar Gesichter und kommst leichter ins Gespräch. Aus einem ersten unbeholfenen Abend entsteht langsam ein neuer Kontakt."
+delta = SubResource("delta_a")
+
+[sub_resource type="Resource" id="delta_b"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = 0
+verbundenheit = -1
+entlastung = 1
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2_choice")
+label = "Nein, das war wohl einfach nicht meine Gruppe."
+outcome_text = "Du musst dich nicht zu einem Angebot zwingen, bei dem du dich nicht wohlfühlst. Gleichzeitig bleibt dir offen, ob der erste Abend vielleicht einfach ein schwieriger Einstieg war."
+delta = SubResource("delta_b")
+
+[resource]
+script = ExtResource("1_scenario")
+id = &"jana_06"
+character = ExtResource("4_character")
+title = "Das erste Treffen war komisch"
+body_text = "Sie waren gestern doch bei diesem Treffen aus der Nachbarschaftsgruppe. Aber Sie sind kaum mit jemandem ins Gespräch gekommen? Wollen Sie es noch einmal versuchen oder war das nichts für Sie?"
+channel = 0
+sender_label = ""
+choice_a = SubResource("choice_a")
+choice_b = SubResource("choice_b")
+follows = &"jana_05"

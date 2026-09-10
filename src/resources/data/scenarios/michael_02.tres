@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ScenarioData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ScenarioData.gd" id="1_scenario"]
+[ext_resource type="Script" path="res://src/resources/ChoiceData.gd" id="2_choice"]
+[ext_resource type="Script" path="res://src/resources/ValueDelta.gd" id="3_delta"]
+[ext_resource type="Resource" path="res://src/resources/data/characters/michael.tres" id="4_character"]
+
+[sub_resource type="Resource" id="delta_a"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = -1
+verbundenheit = 0
+entlastung = 1
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2_choice")
+label = "Ja, das wäre praktisch."
+outcome_text = "Pakete werden künftig auch bei Abwesenheit zugestellt. Dafür liegen sie zeitweise unbeaufsichtigt."
+delta = SubResource("delta_a")
+
+[sub_resource type="Resource" id="delta_b"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = 1
+verbundenheit = 0
+entlastung = -1
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2_choice")
+label = "Nein, ich möchte Pakete lieber persönlich annehmen."
+outcome_text = "Die Übergabe ist sicherer, dafür musst du häufiger zuhause sein oder zur Abholung gehen."
+delta = SubResource("delta_b")
+
+[resource]
+script = ExtResource("1_scenario")
+id = &"michael_02"
+character = ExtResource("4_character")
+title = "Zustellwunsch in der App"
+body_text = "Sie können in der App einstellen, dass Pakete künftig automatisch vor der Haustür abgelegt werden. Dann müssen Sie nicht mehr zuhause sein. Wollen Sie das machen?"
+channel = 0
+sender_label = ""
+choice_a = SubResource("choice_a")
+choice_b = SubResource("choice_b")
+follows = &""

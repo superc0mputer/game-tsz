@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ScenarioData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ScenarioData.gd" id="1_scenario"]
+[ext_resource type="Script" path="res://src/resources/ChoiceData.gd" id="2_choice"]
+[ext_resource type="Script" path="res://src/resources/ValueDelta.gd" id="3_delta"]
+[ext_resource type="Resource" path="res://src/resources/data/characters/noah.tres" id="4_character"]
+
+[sub_resource type="Resource" id="delta_a"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 1
+sicherheit = 0
+verbundenheit = 2
+entlastung = 0
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2_choice")
+label = "Ja, zeig mir kurz, wie es geht, dann probiere ich es selbst."
+outcome_text = "Am Anfang musst du noch suchen, wo du tippen musst. Nach ein paar Minuten klappt es und du kannst beim nächsten Mal vieles selbst machen."
+delta = SubResource("delta_a")
+
+[sub_resource type="Resource" id="delta_b"]
+script = ExtResource("3_delta")
+selbststaendigkeit = -1
+sicherheit = 0
+verbundenheit = 2
+entlastung = 0
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2_choice")
+label = "Bleib lieber dabei und mach das für mich."
+outcome_text = "Der Videocall klappt ohne viel Herumprobieren und du kannst dich ganz auf die Familie konzentrieren. Allerdings brauchst du beim nächsten Anruf Noah wahrscheinlich wieder."
+delta = SubResource("delta_b")
+
+[resource]
+script = ExtResource("1_scenario")
+id = &"noah_06"
+character = ExtResource("4_character")
+title = "Der erste Videocall"
+body_text = "Die Familie will sich heute Abend per Video zusammenschalten. Tante Karin und die Kinder sind auch dabei. Du hast das noch nie gemacht, aber ich könnte dir vorher kurz zeigen, wo Kamera und Mikrofon sind. Willst du es selbst ausprobieren?"
+channel = 0
+sender_label = ""
+choice_a = SubResource("choice_a")
+choice_b = SubResource("choice_b")
+follows = &""

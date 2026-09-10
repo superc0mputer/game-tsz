@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ScenarioData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ScenarioData.gd" id="1_scenario"]
+[ext_resource type="Script" path="res://src/resources/ChoiceData.gd" id="2_choice"]
+[ext_resource type="Script" path="res://src/resources/ValueDelta.gd" id="3_delta"]
+[ext_resource type="Resource" path="res://src/resources/data/characters/linh.tres" id="4_character"]
+
+[sub_resource type="Resource" id="delta_a"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 1
+sicherheit = 0
+verbundenheit = 0
+entlastung = -1
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2_choice")
+label = "Nein, meine Bankgeschäfte möchte ich selbst regeln."
+outcome_text = "Du behältst die volle Kontrolle. Falls du plötzlich Unterstützung brauchst, muss die Familie aber erst andere Lösungen finden."
+delta = SubResource("delta_a")
+
+[sub_resource type="Resource" id="delta_b"]
+script = ExtResource("3_delta")
+selbststaendigkeit = -1
+sicherheit = 0
+verbundenheit = 1
+entlastung = 1
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2_choice")
+label = "Ja, das gibt mir Sicherheit."
+outcome_text = "Silke kann im Bedarfsfall schnell helfen. Gleichzeitig gibst du ihr weitreichenden Einblick und Handlungsmöglichkeiten."
+delta = SubResource("delta_b")
+
+[resource]
+script = ExtResource("1_scenario")
+id = &"linh_03"
+character = ExtResource("4_character")
+title = "Vollmacht für Silke"
+body_text = "Falls einmal etwas passiert, könnten Sie Ihrer Tochter Silke eine Kontovollmacht geben. Dann könnte sie bestimmte Bankgeschäfte für Sie erledigen. Möchten Sie das?"
+channel = 0
+sender_label = ""
+choice_a = SubResource("choice_a")
+choice_b = SubResource("choice_b")
+follows = &""

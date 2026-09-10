@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ScenarioData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ScenarioData.gd" id="1_scenario"]
+[ext_resource type="Script" path="res://src/resources/ChoiceData.gd" id="2_choice"]
+[ext_resource type="Script" path="res://src/resources/ValueDelta.gd" id="3_delta"]
+[ext_resource type="Resource" path="res://src/resources/data/characters/silke.tres" id="4_character"]
+
+[sub_resource type="Resource" id="delta_a"]
+script = ExtResource("3_delta")
+selbststaendigkeit = -1
+sicherheit = 1
+verbundenheit = 1
+entlastung = 0
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2_choice")
+label = "Okay, lass uns so ein System einrichten."
+outcome_text = "Die Sensoren geben Silke mehr Sicherheit und können im Notfall Hilfe auslösen. Gleichzeitig werden nun Informationen darüber erfasst, was in der Wohnung passiert."
+delta = SubResource("delta_a")
+
+[sub_resource type="Resource" id="delta_b"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 1
+sicherheit = 1
+verbundenheit = 0
+entlastung = -1
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2_choice")
+label = "Lass uns erst schauen, ob es weniger eingreifende Lösungen gibt."
+outcome_text = "Ihr prüft zunächst Beleuchtung, Stolperstellen und Haltegriffe. Das senkt einige Risiken, ohne dass die Wohnung technisch überwacht wird."
+delta = SubResource("delta_b")
+
+[resource]
+script = ExtResource("1_scenario")
+id = &"silke_01"
+character = ExtResource("4_character")
+title = "Die Sensoren"
+body_text = "Nach deinem Beinahe-Sturz mache ich mir echt Sorgen. Es gibt Sensoren für die Wohnung, die merken können, wenn etwas passiert. Dann könnte automatisch jemand informiert werden. Ich würde mich besser fühlen, wenn wir sowas einrichten. Was meinst du?"
+channel = 0
+sender_label = ""
+choice_a = SubResource("choice_a")
+choice_b = SubResource("choice_b")
+follows = &""

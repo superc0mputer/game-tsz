@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ScenarioData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ScenarioData.gd" id="1_scenario"]
+[ext_resource type="Script" path="res://src/resources/ChoiceData.gd" id="2_choice"]
+[ext_resource type="Script" path="res://src/resources/ValueDelta.gd" id="3_delta"]
+[ext_resource type="Resource" path="res://src/resources/data/characters/hildegard.tres" id="4_character"]
+
+[sub_resource type="Resource" id="delta_a"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = -2
+verbundenheit = 0
+entlastung = 1
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2_choice")
+label = "Das Handy hält bestimmt noch."
+outcome_text = "Auf dem Hinweg klappt alles. Auf dem Rückweg geht der Akku aus und ihr könnt bei einer Fahrkartenkontrolle kein Ticket vorzeigen. Außerdem vertut ihr euch beim Umstieg und kommt erst spät am Abend wieder zuhause an."
+delta = SubResource("delta_a")
+
+[sub_resource type="Resource" id="delta_b"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 1
+sicherheit = 1
+verbundenheit = 0
+entlastung = -1
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2_choice")
+label = "Wir schreiben die wichtigsten Sachen kurz auf und drucken die Tickets nochmal aus."
+outcome_text = "Der Akku hält am Ende doch durch. Mit Route, Adresse und den wichtigsten Angaben auf Papier hättet ihr aber auch bei einem Ausfall weitergewusst."
+delta = SubResource("delta_b")
+
+[resource]
+script = ExtResource("1_scenario")
+id = &"hildegard_04"
+character = ExtResource("4_character")
+title = "Der Akku wird knapp"
+body_text = "Ich freu mich ja auf unseren Ausflug zum Kunsthandwerkermarkt – da waren wir beide noch nie. Du hast ja die Fahrkarten, die Verbindung und die Adresse auf dem Handy? Ich sehe nur gerade, dass du nur noch 30 % Akku hast. Ich würde mir die wichtigsten Sachen lieber kurz aufschreiben und die Tickets nochmal ausdrucken. Oder meinst du, das Handy hält noch durch?"
+channel = 0
+sender_label = ""
+choice_a = SubResource("choice_a")
+choice_b = SubResource("choice_b")
+follows = &""

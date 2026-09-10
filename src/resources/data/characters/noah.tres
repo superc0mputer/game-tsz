@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/resources/CharacterData.gd" id="1_char"]
+[ext_resource type="Texture2D" path="res://assets/sprites/characters/noah.svg" id="2_portrait"]
+
+[resource]
+script = ExtResource("1_char")
+id = &"noah"
+display_name = "Noah"
+tagline = "Der klugscheißende Enkel"
+age_text = "ca. Anfang 20"
+role_text = "Enkel"
+description = "Noah ist mit Smartphones, Apps und sozialen Medien aufgewachsen. Für ihn sind viele Dinge selbstverständlich. Er meint es gut, erklärt aber oft zu schnell und benutzt Begriffe, die für andere nicht selbstverständlich sind."
+strengths = "Kennt viele digitale Möglichkeiten und findet schnell Lösungen."
+weaknesses = "Er verwechselt Bedienkompetenz manchmal mit echter Medienkompetenz. Datenschutz, Betrug oder langfristige Konsequenzen nimmt er teilweise weniger ernst."
+portrait = ExtResource("2_portrait")
+accent_color = Color(0.227, 0.525, 1, 1)
+formal_address = false

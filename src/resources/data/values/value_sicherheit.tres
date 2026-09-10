@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="ValueDefinition" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ValueDefinition.gd" id="1_def"]
+[ext_resource type="Script" path="res://src/resources/ValueTier.gd" id="2_tier"]
+[ext_resource type="Texture2D" path="res://assets/sprites/icons/value_sicherheit.svg" id="3_icon"]
+
+[sub_resource type="Resource" id="tier_0"]
+script = ExtResource("2_tier")
+min_score = 0
+max_score = 0
+state_name = "Sehr risikobereit"
+description = "Du handelst häufig schnell und vertraust darauf, dass schon alles stimmen wird. Das ist unkompliziert, kann dich aber anfälliger für Betrug, Datenverlust oder andere unerwünschte Folgen machen."
+
+[sub_resource type="Resource" id="tier_1"]
+script = ExtResource("2_tier")
+min_score = 1
+max_score = 3
+state_name = "Eher unbeschwert"
+description = "Du hinterfragst ungewöhnliche Nachrichten, Angebote oder Einstellungen nicht immer. Oft spart das Zeit, bei manchen Situationen wäre ein zweiter Blick aber hilfreich."
+
+[sub_resource type="Resource" id="tier_2"]
+script = ExtResource("2_tier")
+min_score = 4
+max_score = 6
+state_name = "Wachsam mit Augenmaß"
+description = "Du prüfst genauer, wenn es einen guten Grund dafür gibt, ohne digitale Angebote grundsätzlich abzulehnen. Sicherheit ist für dich wichtig, aber nicht das einzige Kriterium."
+
+[sub_resource type="Resource" id="tier_3"]
+script = ExtResource("2_tier")
+min_score = 7
+max_score = 9
+state_name = "Sehr vorsichtig"
+description = "Du überprüfst Kontakte, Datenfreigaben und ungewöhnliche Situationen sorgfältig. Das schützt dich vor vielen Risiken, macht manches aber auch langsamer oder aufwendiger."
+
+[sub_resource type="Resource" id="tier_4"]
+script = ExtResource("2_tier")
+min_score = 10
+max_score = 10
+state_name = "Sicherheit hat Vorrang"
+description = "Du entscheidest fast immer zugunsten der sichereren Variante. Das schützt dich sehr konsequent, kann aber bedeuten, dass Komfort, spontane Kontakte oder hilfreiche digitale Angebote häufiger zurückstecken."
+
+[resource]
+script = ExtResource("1_def")
+id = &"sicherheit"
+display_name = "Sicherheit"
+focus = "Daten, Geld, Geräte und die eigene Person schützen, Risiken erkennen und überprüfen."
+color = Color(0.239, 0.353, 0.600, 1)
+icon = ExtResource("3_icon")
+tiers = Array[ExtResource("2_tier")]([SubResource("tier_0"), SubResource("tier_1"), SubResource("tier_2"), SubResource("tier_3"), SubResource("tier_4")])

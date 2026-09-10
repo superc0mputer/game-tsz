@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/resources/CharacterData.gd" id="1_char"]
+[ext_resource type="Texture2D" path="res://assets/sprites/characters/michael.svg" id="2_portrait"]
+
+[resource]
+script = ExtResource("1_char")
+id = &"michael"
+display_name = "Michael Müller"
+tagline = "Der Postbote"
+age_text = "ca. Mitte 40"
+role_text = "Vertrauter Paket- und Briefzusteller"
+description = "Michael kennt viele Menschen in der Gegend und ist freundlich und hilfsbereit. Er bringt Pakete, erklärt Abholscheine oder hilft gelegentlich bei Fragen zur Packstation."
+strengths = "Vertrauenswürdig, alltagsnah und nah an der Schnittstelle zwischen analoger und digitaler Welt."
+weaknesses = "Er kennt die digitalen Systeme seines Arbeitgebers aus der Praxis, aber nicht jede technische oder sicherheitsrelevante Besonderheit."
+portrait = ExtResource("2_portrait")
+accent_color = Color(0.949, 0.718, 0.020, 1)
+formal_address = true

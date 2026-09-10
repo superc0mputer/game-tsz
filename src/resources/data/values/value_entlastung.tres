@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="ValueDefinition" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ValueDefinition.gd" id="1_def"]
+[ext_resource type="Script" path="res://src/resources/ValueTier.gd" id="2_tier"]
+[ext_resource type="Texture2D" path="res://assets/sprites/icons/value_entlastung.svg" id="3_icon"]
+
+[sub_resource type="Resource" id="tier_0"]
+script = ExtResource("2_tier")
+min_score = 0
+max_score = 0
+state_name = "Viel Aufwand"
+description = "Viele Aufgaben erledigst du auf eher aufwendige Weise oder ohne zusätzliche Hilfen. Das kann dir Kontrolle geben, kostet dich und manchmal auch dein Umfeld jedoch viel Zeit und Energie."
+
+[sub_resource type="Resource" id="tier_1"]
+script = ExtResource("2_tier")
+min_score = 1
+max_score = 3
+state_name = "Eher aufwendig organisiert"
+description = "Du nutzt digitale Erleichterungen, Automatisierung oder Unterstützung eher zurückhaltend. Dadurch bleibt vieles vertraut, manches könnte aber einfacher oder weniger zeitintensiv sein."
+
+[sub_resource type="Resource" id="tier_2"]
+script = ExtResource("2_tier")
+min_score = 4
+max_score = 6
+state_name = "Gut entlastet"
+description = "Du nutzt Hilfen dort, wo sie dir wirklich etwas bringen. Dabei achtest du darauf, nicht mehr Verantwortung abzugeben, als du möchtest, und Belastung nicht einfach auf andere zu verschieben."
+
+[sub_resource type="Resource" id="tier_3"]
+script = ExtResource("2_tier")
+min_score = 7
+max_score = 9
+state_name = "Stark entlastet"
+description = "Viele Abläufe sind für dich bequem organisiert oder werden durch Technik und andere Menschen unterstützt. Das spart Zeit und Kraft, kann aber auch mehr Abhängigkeit oder weniger eigenen Überblick bedeuten."
+
+[sub_resource type="Resource" id="tier_4"]
+script = ExtResource("2_tier")
+min_score = 10
+max_score = 10
+state_name = "Möglichst viel abgenommen"
+description = "Viele Aufgaben werden vereinfacht, automatisiert oder von anderen übernommen. Das kann deinen Alltag deutlich erleichtern, kann aber auch dazu führen, dass du weniger selbst steuerst oder Angehörige dauerhaft Verantwortung übernehmen."
+
+[resource]
+script = ExtResource("1_def")
+id = &"entlastung"
+display_name = "Entlastung"
+focus = "Aufwand reduzieren, digitale Hilfen sinnvoll nutzen und Aufgaben so organisieren, dass sie für dich und dein Umfeld gut machbar bleiben."
+color = Color(0.859, 0.612, 0.192, 1)
+icon = ExtResource("3_icon")
+tiers = Array[ExtResource("2_tier")]([SubResource("tier_0"), SubResource("tier_1"), SubResource("tier_2"), SubResource("tier_3"), SubResource("tier_4")])

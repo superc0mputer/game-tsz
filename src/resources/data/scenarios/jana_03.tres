@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ScenarioData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ScenarioData.gd" id="1_scenario"]
+[ext_resource type="Script" path="res://src/resources/ChoiceData.gd" id="2_choice"]
+[ext_resource type="Script" path="res://src/resources/ValueDelta.gd" id="3_delta"]
+[ext_resource type="Resource" path="res://src/resources/data/characters/jana.tres" id="4_character"]
+
+[sub_resource type="Resource" id="delta_a"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = -2
+verbundenheit = 0
+entlastung = 1
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2_choice")
+label = "Dann nehme ich es so, wie die App es anzeigt."
+outcome_text = "Die App war nicht korrekt eingestellt. Digitale Erinnerungen können hilfreich sein, sollten aber nicht eigenständig einen ärztlichen Medikationsplan ersetzen."
+delta = SubResource("delta_a")
+
+[sub_resource type="Resource" id="delta_b"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = 1
+verbundenheit = 0
+entlastung = -1
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2_choice")
+label = "Lassen Sie uns das erst mit Praxis oder Apotheke klären."
+outcome_text = "Die Abweichung wird geklärt und die App anschließend richtig eingestellt. Du kannst die Erinnerungsfunktion weiter nutzen, ohne die medizinische Entscheidung an die App abzugeben."
+delta = SubResource("delta_b")
+
+[resource]
+script = ExtResource("1_scenario")
+id = &"jana_03"
+character = ExtResource("4_character")
+title = "Die Medikamenten-App"
+body_text = "Sie nehmen mehrere Medikamente zu unterschiedlichen Zeiten. Es gibt Apps, die Sie an die Einnahme erinnern können. Eine davon zeigt aber eine andere Uhrzeit als Ihr Medikationsplan. Wollen wir uns nach der App richten oder erst prüfen, was stimmt?"
+channel = 0
+sender_label = ""
+choice_a = SubResource("choice_a")
+choice_b = SubResource("choice_b")
+follows = &""

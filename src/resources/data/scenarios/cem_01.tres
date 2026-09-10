@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ScenarioData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ScenarioData.gd" id="1_scenario"]
+[ext_resource type="Script" path="res://src/resources/ChoiceData.gd" id="2_choice"]
+[ext_resource type="Script" path="res://src/resources/ValueDelta.gd" id="3_delta"]
+[ext_resource type="Resource" path="res://src/resources/data/characters/cem.tres" id="4_character"]
+
+[sub_resource type="Resource" id="delta_a"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = -2
+verbundenheit = 0
+entlastung = 1
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2_choice")
+label = "Ich bereite die Wertsachen vor."
+outcome_text = "Der Anrufer war nicht Cem. Die angebliche Gefahr sollte dich dazu bringen, Bargeld und Schmuck freiwillig an einen Kriminellen zu übergeben."
+delta = SubResource("delta_a")
+
+[sub_resource type="Resource" id="delta_b"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = 1
+verbundenheit = 0
+entlastung = -1
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2_choice")
+label = "Ich lege auf und rufe selbst beim Revier an."
+outcome_text = "Der echte Cem bestätigt, dass es keinen solchen Einsatz gibt. Die Polizei nimmt keine Wertsachen zur „Sicherung“ mit und ruft nicht mit der 110 an."
+delta = SubResource("delta_b")
+
+[resource]
+script = ExtResource("1_scenario")
+id = &"cem_01"
+character = ExtResource("4_character")
+title = "Ihre Wertsachen sind nicht sicher"
+body_text = "Anruf von der 110: Guten Tag, hier spricht die Polizei. Wir haben Hinweise, dass in Ihrer Straße eingebrochen werden soll. Bitte legen Sie Bargeld und Schmuck bereit, ein Kollege kommt gleich vorbei und bringt alles in Sicherheit."
+channel = 2
+sender_label = "Anruf von der 110"
+choice_a = SubResource("choice_a")
+choice_b = SubResource("choice_b")
+follows = &""

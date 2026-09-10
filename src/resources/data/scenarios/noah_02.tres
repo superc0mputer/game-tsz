@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ScenarioData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ScenarioData.gd" id="1_scenario"]
+[ext_resource type="Script" path="res://src/resources/ChoiceData.gd" id="2_choice"]
+[ext_resource type="Script" path="res://src/resources/ValueDelta.gd" id="3_delta"]
+[ext_resource type="Resource" path="res://src/resources/data/characters/noah.tres" id="4_character"]
+
+[sub_resource type="Resource" id="delta_a"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 1
+sicherheit = 1
+verbundenheit = 0
+entlastung = -1
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2_choice")
+label = "Zeig mir erst mal, welche Daten die App sammelt."
+outcome_text = "Noah ist etwas überrascht, wie viele Informationen verarbeitet werden können. Ihr schaut euch gemeinsam die Einstellungen an und entscheidet bewusster, was du freigibst."
+delta = SubResource("delta_a")
+
+[sub_resource type="Resource" id="delta_b"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = -1
+verbundenheit = 0
+entlastung = 1
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2_choice")
+label = "Ja, richte mir die App ein."
+outcome_text = "Du bekommst zusätzliche Rabatte und findest die App praktisch. Dafür werden deine Einkäufe mit deinem Kundenkonto verknüpft und können für personalisierte Angebote ausgewertet werden."
+delta = SubResource("delta_b")
+
+[resource]
+script = ExtResource("1_scenario")
+id = &"noah_02"
+character = ExtResource("4_character")
+title = "Die Supermarkt-App"
+body_text = "Du kaufst doch ständig in dem Supermarkt ein. Die haben jetzt eine App mit extra Rabatten. Ich kann dir die schnell installieren und ein Konto anlegen, dann sparst du jedes Mal ein bisschen. Willst du?"
+channel = 0
+sender_label = ""
+choice_a = SubResource("choice_a")
+choice_b = SubResource("choice_b")
+follows = &""

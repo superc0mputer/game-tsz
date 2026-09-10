@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ScenarioData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ScenarioData.gd" id="1_scenario"]
+[ext_resource type="Script" path="res://src/resources/ChoiceData.gd" id="2_choice"]
+[ext_resource type="Script" path="res://src/resources/ValueDelta.gd" id="3_delta"]
+[ext_resource type="Resource" path="res://src/resources/data/characters/jana.tres" id="4_character"]
+
+[sub_resource type="Resource" id="delta_a"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = 1
+verbundenheit = 0
+entlastung = -1
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2_choice")
+label = "Ich möchte lieber einen Termin vor Ort."
+outcome_text = "Du musst länger auf einen Termin warten und den Weg zur Praxis auf dich nehmen. Dafür kann die Ärztin dich direkt untersuchen."
+delta = SubResource("delta_a")
+
+[sub_resource type="Resource" id="delta_b"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 1
+sicherheit = 0
+verbundenheit = 0
+entlastung = 1
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2_choice")
+label = "Ja, wir probieren den Videotermin."
+outcome_text = "Jana testet vorher mit dir Kamera und Ton. Der Termin klappt gut und du sparst dir den Weg zur Praxis. Für manche Beschwerden reicht ein Videogespräch allerdings nicht aus."
+delta = SubResource("delta_b")
+
+[resource]
+script = ExtResource("1_scenario")
+id = &"jana_01"
+character = ExtResource("4_character")
+title = "Virtuelle Sprechstunde"
+body_text = "Die Praxis hat kurzfristig einen Termin per Video angeboten. Das wäre natürlich praktisch, weil der Weg wegfällt. Aber wir sollten vorher schauen, ob Kamera, Ton und der Zugangslink funktionieren. Wollen Sie den Termin nehmen?"
+channel = 0
+sender_label = ""
+choice_a = SubResource("choice_a")
+choice_b = SubResource("choice_b")
+follows = &""

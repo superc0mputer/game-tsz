@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ScenarioData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ScenarioData.gd" id="1_scenario"]
+[ext_resource type="Script" path="res://src/resources/ChoiceData.gd" id="2_choice"]
+[ext_resource type="Script" path="res://src/resources/ValueDelta.gd" id="3_delta"]
+[ext_resource type="Resource" path="res://src/resources/data/characters/cem.tres" id="4_character"]
+
+[sub_resource type="Resource" id="delta_a"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = 1
+verbundenheit = 0
+entlastung = -1
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2_choice")
+label = "Ich rufe lieber selbst beim Revier zurück."
+outcome_text = "Du erreichst Cem über die offizielle Nummer und bestätigst so zusätzlich, dass der Anruf wirklich von der Polizei kam."
+delta = SubResource("delta_a")
+
+[sub_resource type="Resource" id="delta_b"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 0
+sicherheit = 0
+verbundenheit = 1
+entlastung = 1
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2_choice")
+label = "Okay, ich beantworte die Rückfrage."
+outcome_text = "Der Anruf ist echt und Cem fragt nur nach Angaben, die zur bereits bekannten Anzeige gehören."
+delta = SubResource("delta_b")
+
+[resource]
+script = ExtResource("1_scenario")
+id = &"cem_02"
+character = ExtResource("4_character")
+title = "Der Rückruf"
+body_text = "Guten Tag, hier ist Cem Yilmaz vom örtlichen Revier. Sie hatten gestern wegen eines Betrugsversuchs Anzeige erstattet. Ich hätte dazu noch eine kurze Rückfrage zu der Telefonnummer, von der Sie angerufen wurden."
+channel = 2
+sender_label = ""
+choice_a = SubResource("choice_a")
+choice_b = SubResource("choice_b")
+follows = &""

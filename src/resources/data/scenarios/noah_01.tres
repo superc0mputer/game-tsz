@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ScenarioData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://src/resources/ScenarioData.gd" id="1_scenario"]
+[ext_resource type="Script" path="res://src/resources/ChoiceData.gd" id="2_choice"]
+[ext_resource type="Script" path="res://src/resources/ValueDelta.gd" id="3_delta"]
+[ext_resource type="Resource" path="res://src/resources/data/characters/noah.tres" id="4_character"]
+
+[sub_resource type="Resource" id="delta_a"]
+script = ExtResource("3_delta")
+selbststaendigkeit = -1
+sicherheit = 0
+verbundenheit = 1
+entlastung = 0
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2_choice")
+label = "Ach, irgendwie werde ich mich schon verständigen, hat ja bisher auch immer geklappt."
+outcome_text = "Vieles klappt mit Gesten und freundlichem Nachfragen und du machst nette Bekanntschaften. Wenn aber weder Deutsch noch eine gemeinsame andere Sprache funktioniert, bist du stärker darauf angewiesen, dass jemand anderes weiterhelfen kann."
+delta = SubResource("delta_a")
+
+[sub_resource type="Resource" id="delta_b"]
+script = ExtResource("3_delta")
+selbststaendigkeit = 1
+sicherheit = 0
+verbundenheit = 1
+entlastung = 0
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2_choice")
+label = "Ja, zeig mir, wie ich das selbst benutzen kann."
+outcome_text = "Im Urlaub kannst du Schilder und Speisekarten übersetzen und auch einfache Gespräche unterstützen. Die Übersetzung ist nicht immer perfekt, gibt dir aber mehr Möglichkeiten, dir selbst zu helfen."
+delta = SubResource("delta_b")
+
+[resource]
+script = ExtResource("1_scenario")
+id = &"noah_01"
+character = ExtResource("4_character")
+title = "Lost in Translation"
+body_text = "Du wolltest doch im Urlaub auch mal alleine losziehen. Wenn du dort etwas fragen musst und die Leute kein Deutsch sprechen – und du mit Englisch auch nicht weiterkommst – kannst du dein Handy zum Übersetzen nehmen. Du kannst sogar die Kamera auf Schilder oder Speisekarten halten. Soll ich dir zeigen, wie das geht?"
+channel = 0
+sender_label = ""
+choice_a = SubResource("choice_a")
+choice_b = SubResource("choice_b")
+follows = &""
