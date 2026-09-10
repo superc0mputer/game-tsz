@@ -1,0 +1,165 @@
+[gd_scene load_steps=17 format=3]
+
+[ext_resource type="Script" path="res://src/scenes/game.gd" id="1_game"]
+[ext_resource type="Shader" path="res://assets/shaders/soft_background.gdshader" id="2_shader"]
+[ext_resource type="PackedScene" path="res://src/entities/scenario_bubble.tscn" id="3_bubble"]
+[ext_resource type="PackedScene" path="res://src/components/option_panel.tscn" id="4_option"]
+[ext_resource type="PackedScene" path="res://src/entities/scenario_card.tscn" id="5_card"]
+[ext_resource type="PackedScene" path="res://src/components/value_bar.tscn" id="6_valuebar"]
+[ext_resource type="PackedScene" path="res://src/entities/outcome_panel.tscn" id="7_outcome"]
+[ext_resource type="PackedScene" path="res://src/entities/end_screen.tscn" id="8_end"]
+[ext_resource type="PackedScene" path="res://src/entities/pause_menu.tscn" id="9_pause"]
+[ext_resource type="Script" path="res://src/systems/state_machine/StateMachine.gd" id="10_sm"]
+[ext_resource type="Script" path="res://src/scenes/states/deal_state.gd" id="11_deal"]
+[ext_resource type="Script" path="res://src/scenes/states/decide_state.gd" id="12_decide"]
+[ext_resource type="Script" path="res://src/scenes/states/resolve_state.gd" id="13_resolve"]
+[ext_resource type="Script" path="res://src/scenes/states/outcome_state.gd" id="14_outcome"]
+[ext_resource type="Script" path="res://src/scenes/states/end_state.gd" id="15_end"]
+
+[sub_resource type="ShaderMaterial" id="bg_material"]
+shader = ExtResource("2_shader")
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_game")
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("bg_material")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.965, 0.945, 0.905, 1)
+
+[node name="Layout" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 14
+
+[node name="Column" type="VBoxContainer" parent="Layout"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="TopBar" type="HBoxContainer" parent="Layout/Column"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="RoundIndicator" type="Label" parent="Layout/Column/TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"RoundLabel"
+text = "Runde 1 von 10"
+
+[node name="MenuButton" type="Button" parent="Layout/Column/TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"SmallButton"
+text = "Menü"
+
+[node name="ScenarioBubble" parent="Layout/Column" instance=ExtResource("3_bubble")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MiddleRow" type="HBoxContainer" parent="Layout/Column"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 28
+alignment = 1
+
+[node name="OptionA" parent="Layout/Column/MiddleRow" instance=ExtResource("4_option")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+side = -1
+
+[node name="CardSlot" type="Control" parent="Layout/Column/MiddleRow"]
+custom_minimum_size = Vector2(290, 370)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="ScenarioCard" parent="Layout/Column/MiddleRow/CardSlot" instance=ExtResource("5_card")]
+unique_name_in_owner = true
+layout_mode = 0
+
+[node name="OptionB" parent="Layout/Column/MiddleRow" instance=ExtResource("4_option")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+side = 1
+
+[node name="ValueBarRow" type="HBoxContainer" parent="Layout/Column"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="BarSelbststaendigkeit" parent="Layout/Column/ValueBarRow" instance=ExtResource("6_valuebar")]
+layout_mode = 2
+value_id = &"selbststaendigkeit"
+
+[node name="BarSicherheit" parent="Layout/Column/ValueBarRow" instance=ExtResource("6_valuebar")]
+layout_mode = 2
+value_id = &"sicherheit"
+
+[node name="BarVerbundenheit" parent="Layout/Column/ValueBarRow" instance=ExtResource("6_valuebar")]
+layout_mode = 2
+value_id = &"verbundenheit"
+
+[node name="BarEntlastung" parent="Layout/Column/ValueBarRow" instance=ExtResource("6_valuebar")]
+layout_mode = 2
+value_id = &"entlastung"
+
+[node name="OutcomePanel" parent="." instance=ExtResource("7_outcome")]
+z_index = 50
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="EndScreen" parent="." instance=ExtResource("8_end")]
+z_index = 50
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="PauseMenu" parent="." instance=ExtResource("9_pause")]
+z_index = 50
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="GameLoop" type="Node" parent="."]
+script = ExtResource("10_sm")
+initial_state = &"Deal"
+
+[node name="Deal" type="Node" parent="GameLoop"]
+script = ExtResource("11_deal")
+
+[node name="Decide" type="Node" parent="GameLoop"]
+script = ExtResource("12_decide")
+
+[node name="Resolve" type="Node" parent="GameLoop"]
+script = ExtResource("13_resolve")
+
+[node name="Outcome" type="Node" parent="GameLoop"]
+script = ExtResource("14_outcome")
+
+[node name="End" type="Node" parent="GameLoop"]
+script = ExtResource("15_end")

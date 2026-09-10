@@ -1,0 +1,116 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://src/scenes/main_menu.gd" id="1_menu"]
+[ext_resource type="Shader" path="res://assets/shaders/soft_background.gdshader" id="2_shader"]
+[ext_resource type="Texture2D" path="res://icon.svg" id="3_logo"]
+
+[sub_resource type="ShaderMaterial" id="bg_material"]
+shader = ExtResource("2_shader")
+shader_parameter/blob_size = 0.7
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("bg_material")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.965, 0.945, 0.905, 1)
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="Center"]
+custom_minimum_size = Vector2(560, 0)
+layout_mode = 2
+theme_type_variation = &"OverlayPanel"
+
+[node name="Margin" type="MarginContainer" parent="Center/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 44
+theme_override_constants/margin_top = 34
+theme_override_constants/margin_right = 44
+theme_override_constants/margin_bottom = 36
+
+[node name="Column" type="VBoxContainer" parent="Center/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="LogoCenter" type="CenterContainer" parent="Center/Panel/Margin/Column"]
+layout_mode = 2
+
+[node name="Logo" type="TextureRect" parent="Center/Panel/Margin/Column/LogoCenter"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("3_logo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HeroLabel" type="Label" parent="Center/Panel/Margin/Column"]
+layout_mode = 2
+theme_type_variation = &"HeroLabel"
+text = "VITA"
+horizontal_alignment = 1
+
+[node name="TaglineLabel" type="Label" parent="Center/Panel/Margin/Column"]
+layout_mode = 2
+theme_type_variation = &"BodyLabel"
+text = "Ein Spiel über den digitalen Alltag"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="Center/Panel/Margin/Column"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="ContinueButton" type="Button" parent="Center/Panel/Margin/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Spiel fortsetzen"
+
+[node name="PlayButton" type="Button" parent="Center/Panel/Margin/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Neues Spiel"
+
+[node name="ResetButton" type="Button" parent="Center/Panel/Margin/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"SecondaryButton"
+text = "Spielstand löschen"
+
+[node name="QuitButton" type="Button" parent="Center/Panel/Margin/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"SecondaryButton"
+text = "Beenden"
+
+[node name="Footer" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -60.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"Muted"
+text = "Ziehe Karten nach links oder rechts, triff Entscheidungen und behalte deine Werte im Blick."
+horizontal_alignment = 1
